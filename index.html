@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Behavior Analysis</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --bg: #0b1020;
+    --surface: #11182a;
+    --surface-strong: #141d31;
+    --border: rgba(162, 179, 215, 0.14);
+    --border-strong: rgba(162, 179, 215, 0.22);
+    --text: #edf2fb;
+    --muted: #a1adc6;
+    --accent: #8cb8ff;
+    --accent-2: #d9c58d;
+    --accent-3: #a39be9;
+    --shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--text);
+    font-family: Inter, system-ui, sans-serif;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(125, 211, 252, 0.20), transparent 28%),
+      radial-gradient(circle at 85% 15%, rgba(155, 140, 255, 0.18), transparent 24%),
+      radial-gradient(circle at 75% 85%, rgba(249, 199, 79, 0.13), transparent 26%),
+      linear-gradient(160deg, var(--bg) 0%, var(--bg2) 100%);
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Behavior Analysis</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+      :root {
+        --bg: #f6f8fb;
+        --surface: #ffffff;
+        --border: #d9e0ea;
+        --border-strong: #c7cfdb;
+        --text: #101828;
+        --muted: #5f6b7a;
+        --accent: #0f172a;
+        --shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Inter, system-ui, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+      }
+
+      .wrap {
+        width: min(960px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 40px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      .brand-copy strong {
+        display: block;
+        font-size: 0.98rem;
+        font-weight: 600;
+      }
+
+      .brand-copy span,
+      .kicker,
+      .footer {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .kicker {
+        padding: 8px 0;
+        white-space: nowrap;
+      }
+
+      .hero {
+        padding: 28px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .lede {
+        margin: 12px 0 0;
+        max-width: 62ch;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 14px;
+        border-radius: 10px;
+        border: 1px solid var(--border-strong);
+        text-decoration: none;
+        font-weight: 600;
+        color: var(--text);
+        background: #ffffff;
+      }
+
+      .button.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #ffffff;
+      }
+
+      .section {
+        margin-top: 20px;
+        padding: 22px 0 0;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: baseline;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .item {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 12px;
+        align-items: center;
+        padding: 14px 16px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--surface);
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      .item:hover {
+        border-color: var(--border-strong);
+      }
+
+      .num {
+        width: 32px;
+        height: 32px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: #f9fafb;
+        color: var(--muted);
+        font-size: 0.84rem;
+        font-weight: 600;
+      }
+
+      .item strong {
+        display: block;
+        font-size: 0.98rem;
+        font-weight: 600;
+      }
+
+      .item span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-top: 2px;
+      }
+
+      .arrow {
+        color: var(--muted);
+      }
+
+      .footer {
+        margin-top: 18px;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .footer a {
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      @media (max-width: 640px) {
+        .wrap { width: min(100% - 20px, 960px); padding-top: 20px; }
+        .hero { padding: 22px; }
+        .item { grid-template-columns: auto 1fr; }
+        .arrow { display: none; }
+      }
+    </style>
+    </head>
+    <body>
+      <main class="wrap">
+        <header class="topbar">
+          <a class="brand" href="#experiments">
+            <div class="brand-mark">AB</div>
+            <div class="brand-copy">
+              <strong>Agent Behavior Analysis</strong>
+              <span>Project index</span>
+            </div>
+          </a>
+          <div class="kicker">1 experiment available</div>
+        </header>
+
+        <section class="hero">
+          <h1>Standalone experiment pages</h1>
+          <p class="lede">Use this index to open each HTML experiment directly. The page stays intentionally minimal and is meant to be a clean entry point for the project.</p>
+          <div class="actions">
+            <a class="button primary" href="#experiments">View experiments</a>
+            <a class="button" href="E1.1_interpretability_analysis.html">Open current analysis</a>
+          </div>
+        </section>
+
+        <section class="section" id="experiments">
+          <div class="section-head">
+            <h2>Experiments</h2>
+            <p>Links to the individual HTML files in this repository.</p>
+          </div>
+
+          <div class="list" id="experiment-list"></div>
+        </section>
+
+        <footer class="footer">
+          <div>Static GitHub Pages index.</div>
+          <div><a href="E1.1_interpretability_analysis.html">E1.1_interpretability_analysis.html</a></div>
+        </footer>
+      </main>
+
+      <script>
+        const experiments = [
+          {
+            id: '01',
+            title: 'Interpretability Analysis',
+            description: 'Three agents, one ambiguous prompt, and a structural comparison of their responses.',
+            href: 'E1.1_interpretability_analysis.html'
+          }
+        ];
+
+        const list = document.getElementById('experiment-list');
+
+        list.innerHTML = experiments.map((experiment) => `
+          <a class="item" href="${experiment.href}">
+            <span class="num">${experiment.id}</span>
+            <span>
+              <strong>${experiment.title}</strong>
+              <span>${experiment.description}</span>
+            </span>
+            <span class="arrow">→</span>
+          </a>
+        `).join('');
+      </script>
+    </body>
+    </html>
+    border: 1px solid rgba(255, 255, 255, 0.22);
